@@ -3,11 +3,14 @@ package com.gridnine.testing.Gridnine.rule.impl;
 import com.gridnine.testing.Gridnine.model.Flight;
 import com.gridnine.testing.Gridnine.model.Segment;
 import com.gridnine.testing.Gridnine.rule.Rule;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FlightsWithCorrectDatesRule implements Rule {
+    private static final Logger logger = LoggerFactory.getLogger(FlightsWithCorrectDatesRule.class);
     @Override
     public List<Flight> processFlights(List<Flight> flights) {
         List<Flight> flightsWithCorrectDates = new ArrayList<>();
@@ -24,6 +27,7 @@ public class FlightsWithCorrectDatesRule implements Rule {
             }
             flightsWithCorrectDates.add(new Flight(segments));
         }
+        logger.debug("flightsWithCorrectDates - {}", flightsWithCorrectDates);
         return flightsWithCorrectDates;
     }
 }

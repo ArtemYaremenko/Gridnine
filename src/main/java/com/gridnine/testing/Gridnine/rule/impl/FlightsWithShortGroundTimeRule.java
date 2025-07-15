@@ -3,12 +3,15 @@ package com.gridnine.testing.Gridnine.rule.impl;
 import com.gridnine.testing.Gridnine.model.Flight;
 import com.gridnine.testing.Gridnine.model.Segment;
 import com.gridnine.testing.Gridnine.rule.Rule;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FlightsWithShortGroundTimeRule implements Rule {
+    private static final Logger logger = LoggerFactory.getLogger(FlightsWithShortGroundTimeRule.class);
     @Override
     public List<Flight> processFlights(List<Flight> flights) {
         List<Flight> shortFlights = new ArrayList<>();
@@ -30,6 +33,7 @@ public class FlightsWithShortGroundTimeRule implements Rule {
             }
             shortFlights.add(new Flight(segments));
         }
+        logger.debug("shortFlights - {}", shortFlights);
         return shortFlights;
     }
 }
